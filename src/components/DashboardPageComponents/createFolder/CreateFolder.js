@@ -5,11 +5,15 @@ import Form from "react-bootstrap/Form";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { createFolder } from "../../../redux/actioncCreators/fileFolderActionCreator";
 import { toast } from "react-toastify";
+import { RotatingLines } from "react-loader-spinner";
 
 const CreateFolder = ({
   isCreatedFolderModalOpen,
   setIsCreatedFolderModalOpen,
 }) => {
+  const { folderLoader } = useSelector((state) => ({
+    folderLoader: state.fileFolders.folderLoader,
+  }));
   const [show, setShow] = useState(false);
   const [folderName, setFolderName] = useState("");
   const dispatch = useDispatch();
@@ -36,7 +40,6 @@ const CreateFolder = ({
       return false;
     }
   };
-  const handleClose = () => setShow(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,8 +59,7 @@ const CreateFolder = ({
             lastAccessed: null,
             updatedAt: new Date(),
           };
-          dispatch(createFolder(data));
-          setIsCreatedFolderModalOpen(false);
+          dispatch(createFolder(data, setIsCreatedFolderModalOpen));
         } else {
           toast.warning(`${folderName} already exists.`);
         }
@@ -97,7 +99,19 @@ const CreateFolder = ({
             variant="outline-dark"
             onClick={handleSubmit}
           >
-            Add Folder
+            {folderLoader ? (
+              <span className="">
+                <RotatingLines
+                  strokeColor="white"
+                  strokeWidth="5"
+                  animationDuration="0.75"
+                  width="24"
+                  visible={true}
+                />{" "}
+              </span>
+            ) : (
+              <span> Add Folder </span>
+            )}
           </Button>
         </Modal.Footer>
       </Modal>

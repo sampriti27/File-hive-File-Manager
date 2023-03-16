@@ -1,5 +1,6 @@
 import BreadCrumb from "./BreadCrumb";
 import "./SubBar.css";
+import { useSelector } from "react-redux";
 
 const SubBar = ({
   setIsCreatedFolderModalOpen,
@@ -98,7 +99,7 @@ const SubBar = ({
                     />
                   </svg>
 
-                  <span className="mx-1">Add Folder</span>
+                  <span> Add Folder </span>
                 </div>
               </button>
             </li>

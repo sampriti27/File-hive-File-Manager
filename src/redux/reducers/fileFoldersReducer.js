@@ -2,6 +2,7 @@ import { type } from "@testing-library/user-event/dist/type";
 import * as types from "../actionsTypes/fileFolderActionTypes";
 const initialState = {
   isLoading: true,
+  folderLoader: false,
   currentFolder: "root",
   userFolders: [],
   userFiles: [],
@@ -51,6 +52,11 @@ const fileFoldersReducers = (state = initialState, action) => {
         userFiles: state.userFiles.map((file) =>
           file.docId === fileId ? currentFile : file
         ),
+      };
+    case types.FOLDER_LOADING:
+      return {
+        ...state,
+        folderLoader: action.payload,
       };
     default:
       return state;

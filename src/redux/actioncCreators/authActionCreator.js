@@ -41,6 +41,7 @@ export const signInUser = (email, password, setSuccess) => (dispatch) => {
     })
     .catch((error) => {
       toast.error("Invalid Credentials");
+      dispatch(setLoader(false));
     });
 };
 
@@ -71,6 +72,7 @@ export const signUpUser = (name, email, password, setSuccess) => (dispatch) => {
         })
         .catch((error) => {
           console.log(error);
+          dispatch(setLoader(false));
         })
         .catch((error) => {
           if (error.code === "auth/email-already-in-use") {
@@ -82,6 +84,7 @@ export const signUpUser = (name, email, password, setSuccess) => (dispatch) => {
           if (error.code === "auth/weak-password") {
             toast.error("Weak password!");
           }
+          dispatch(setLoader(false));
         });
     });
 };

@@ -5,8 +5,12 @@ import Form from "react-bootstrap/Form";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { createFile } from "../../../redux/actioncCreators/fileFolderActionCreator";
 import { toast } from "react-toastify";
+import { RotatingLines } from "react-loader-spinner";
 
 const CreateFile = ({ isCreatedFileModalOpen, setIsCreatedFileModalOpen }) => {
+  const { folderLoader } = useSelector((state) => ({
+    folderLoader: state.fileFolders.folderLoader,
+  }));
   const [show, setShow] = useState(false);
   const [fileName, setFileName] = useState("");
   const [success, setSuccess] = useState(false);
@@ -75,9 +79,7 @@ const CreateFile = ({ isCreatedFileModalOpen, setIsCreatedFileModalOpen }) => {
             url: null,
           };
 
-          dispatch(createFile(data, setSuccess));
-
-          setIsCreatedFileModalOpen(false);
+          dispatch(createFile(data, setSuccess, setIsCreatedFileModalOpen));
         } else {
           toast.warning(`${fileName} already exists.`);
         }
@@ -117,7 +119,19 @@ const CreateFile = ({ isCreatedFileModalOpen, setIsCreatedFileModalOpen }) => {
             variant="outline-dark"
             onClick={handleSubmit}
           >
-            Create File
+            {folderLoader ? (
+              <span className="">
+                <RotatingLines
+                  strokeColor="white"
+                  strokeWidth="5"
+                  animationDuration="0.75"
+                  width="24"
+                  visible={true}
+                />{" "}
+              </span>
+            ) : (
+              <span>Create File</span>
+            )}
           </Button>
         </Modal.Footer>
       </Modal>

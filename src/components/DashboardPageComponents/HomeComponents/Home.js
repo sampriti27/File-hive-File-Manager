@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { shallowEqual, useSelector } from "react-redux";
 import ShowItems from "../ShowItems/ShowItems";
-import { ThreeCircles } from "react-loader-spinner";
+import { BallTriangle } from "react-loader-spinner";
+import bg from "./bg-icon.jpg";
 
 const Home = () => {
   const { isLoading, userFolders, userFiles } = useSelector(
@@ -27,22 +28,27 @@ const Home = () => {
       {isLoading ? (
         <>
           <div className="flex align-items-center justify-center mt-5">
-            <ThreeCircles
-              height="100"
-              width="100"
-              color="#3949AB"
-              wrapperStyle={{}}
-              wrapperClass=""
+            <BallTriangle
+              height={100}
+              width={100}
+              radius={5}
+              color="#2F58CD"
+              ariaLabel="ball-triangle-loading"
+              wrapperClass={{}}
+              wrapperStyle=""
               visible={true}
-              ariaLabel="three-circles-rotating"
-              outerCircleColor=""
-              innerCircleColor=""
-              middleCircleColor=""
             />
           </div>
         </>
       ) : (
         <>
+          {createdFiles.length == 0 &&
+            userFolders.length == 0 &&
+            uploadedFiles.length == 0 && (
+              <div className="w-full flex justify-center items-center">
+                <img className="w-[500px]" src={bg} />
+              </div>
+            )}
           <div className="col-md-12 w-100">
             <>
               {userFolders.length > 0 && (

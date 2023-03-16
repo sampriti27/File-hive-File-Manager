@@ -6,8 +6,12 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { uploadFile } from "../../../redux/actioncCreators/fileFolderActionCreator";
 // import { createFile } from "../../../redux/actioncCreators/fileFolderActionCreator";
 import { toast } from "react-toastify";
+import { RotatingLines } from "react-loader-spinner";
 
 const UploadFile = ({ isFileUploadModalOpen, setIsFileUploadModalOpen }) => {
+  const { folderLoader } = useSelector((state) => ({
+    folderLoader: state.fileFolders.folderLoader,
+  }));
   const [show, setShow] = useState(false);
   const [file, setFile] = useState(null);
   const [success, setSuccess] = useState(false);
@@ -67,8 +71,8 @@ const UploadFile = ({ isFileUploadModalOpen, setIsFileUploadModalOpen }) => {
           data: null,
           url: "",
         };
-        dispatch(uploadFile(file, data, setSuccess));
-        setIsFileUploadModalOpen(false);
+        dispatch(uploadFile(file, data, setSuccess, setIsFileUploadModalOpen));
+        // setIsFileUploadModalOpen(false);
         console.log("data", data);
       } else {
         toast.warning(`${file.name} already exists.`);
@@ -105,7 +109,19 @@ const UploadFile = ({ isFileUploadModalOpen, setIsFileUploadModalOpen }) => {
             variant="outline-dark"
             onClick={handleSubmit}
           >
-            Upload File
+            {folderLoader ? (
+              <span className="">
+                <RotatingLines
+                  strokeColor="white"
+                  strokeWidth="5"
+                  animationDuration="0.75"
+                  width="24"
+                  visible={true}
+                />{" "}
+              </span>
+            ) : (
+              <span> Upload File </span>
+            )}
           </Button>
         </Modal.Footer>
       </Modal>
