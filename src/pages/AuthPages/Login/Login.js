@@ -4,9 +4,9 @@ import LoginVector from "./img/LoginVector.jpg";
 import { Link } from "react-router-dom";
 const Login = () => {
   return (
-    <div className="grid grid-cols-2 h-screen p-14">
+    <div className="grid grid-cols-1 lg:grid-cols-2 h-screen p-8 lg:p-14">
       <div classname="">
-        <img className="w-[600px] ml-4" src={LoginVector} />
+        <img className="lg:block hidden w-[600px] ml-4" src={LoginVector} />
       </div>
       <div className="flex flex-column py-16">
         <h1 className="text-4xl text-gray-800 font-semibold">Welcome Back!</h1>

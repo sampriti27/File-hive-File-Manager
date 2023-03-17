@@ -22,14 +22,11 @@ const ShowItems = ({ title, items, Type }) => {
       <h4 className="text-center border-bottom pb-2 text-gray-800 font-medium">
         {title}
       </h4>
-      <div className="row gap-3 p-4 flex-wrap">
+      <div className="flex justify-evenly mt-4 flex-wrap gap-3">
         {items.map((item, index, color) => {
           return (
             <>
-              <div
-                key={index * 55}
-                className="col-md-1 p-4 text-center text-gray-800"
-              >
+              <div key={index * 55} className="text-center text-gray-800">
                 <i
                   style={{
                     color: `${getBgColor()}`,

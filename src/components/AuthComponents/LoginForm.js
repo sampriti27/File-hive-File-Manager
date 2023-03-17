@@ -53,10 +53,10 @@ const LoginForm = () => {
       </div>
       <button
         type="submit"
-        className="relative inline-flex items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm font-medium text-md mt-2 mb-2 text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800"
+        className="relative inline-flex items-center rounded-md w-full border border-transparent bg-indigo-500 px-4 py-2 text-sm font-medium text-md mt-2 mb-2 text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800"
       >
         {loader ? (
-          <span className="">
+          <span className="m-auto">
             <RotatingLines
               strokeColor="white"
               strokeWidth="5"
@@ -66,7 +66,7 @@ const LoginForm = () => {
             />
           </span>
         ) : (
-          <span className="">Login</span>
+          <span className="m-auto">Login</span>
         )}
       </button>
     </form>

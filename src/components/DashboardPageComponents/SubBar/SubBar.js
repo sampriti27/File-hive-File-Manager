@@ -8,8 +8,8 @@ const SubBar = ({
   setIsFileUploadModalOpen,
 }) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white px-5 mt-2">
-      <div className="w-full flex items-center justify-between px-24">
+    <nav className="navbar navbar-expand-lg navbar-light bg-white lg:px-5 mt-2">
+      <div className="w-full lg:flex lg:items-center lg:justify-between lg:px-24">
         <div className="flex items-center">
           <div className="flex item-center">
             <div>
@@ -23,12 +23,12 @@ const SubBar = ({
           </div>
         </div>
 
-        <div>
-          <ul className="navbar-nav mx-auto">
-            <li className="nav-item mx-2">
+        <div className="ml-4 lg:ml-0">
+          <ul className="flex items-center space-x-3 mx-auto">
+            <li className="lg:mx-2">
               <button
                 type="button"
-                className="relative inline-flex items-center rounded-md border border-transparent bg-gray-800 px-1 py-2 text-sm font-sm text-white shadow-sm hover:bg-black focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 focus:ring-offset-gray-800"
+                className="relative inline-flex items-center rounded-md px-4 border border-transparent lg:bg-gray-800 lg:px-1 py-2 text-sm font-sm text-black lg:text-white shadow-md lg:shadow-sm hover:bg-black focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 focus:ring-offset-gray-800"
                 onClick={() => setIsFileUploadModalOpen(true)}
               >
                 <div className="flex items-center justify-between">
@@ -36,9 +36,9 @@ const SubBar = ({
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke-width="1.5"
+                    stroke-width="1"
                     stroke="currentColor"
-                    class="w-5 h-5"
+                    class="w-6 h-6"
                   >
                     <path
                       stroke-linecap="round"
@@ -47,14 +47,14 @@ const SubBar = ({
                     />
                   </svg>
 
-                  <span className="mx-1">Upload Files</span>
+                  <span className="lg:block hidden mx-1">Upload Files</span>
                 </div>
               </button>
             </li>
-            <li className="nav-item mx-2">
+            <li className="lg:mx-2">
               <button
                 type="button"
-                className="relative inline-flex items-center rounded-md border border-transparent bg-gray-800 px-1 py-2 text-sm font-sm text-white shadow-sm hover:bg-black focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 focus:ring-offset-gray-800"
+                className="relative inline-flex items-center rounded-md px-4 border border-transparent lg:bg-gray-800 lg:px-1 py-2 text-sm font-sm text-black lg:text-white shadow-md lg:shadow-sm hover:bg-black focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 focus:ring-offset-gray-800"
                 onClick={() => setIsCreatedFileModalOpen(true)}
               >
                 <div className="flex items-center justify-between">
@@ -62,9 +62,9 @@ const SubBar = ({
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke-width="1.5"
+                    stroke-width="1"
                     stroke="currentColor"
-                    class="w-5 h-5"
+                    class="w-6 h-6"
                   >
                     <path
                       stroke-linecap="round"
@@ -73,14 +73,14 @@ const SubBar = ({
                     />
                   </svg>
 
-                  <span className="mx-1">Add File</span>
+                  <span className="lg:block hidden mx-1">Add File</span>
                 </div>
               </button>
             </li>
-            <li className="nav-item mx-2">
+            <li className="mx-2">
               <button
                 type="button"
-                className="relative inline-flex items-center rounded-md border border-transparent bg-gray-800 px-1 py-2 text-sm font-sm text-white shadow-sm hover:bg-black focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 focus:ring-offset-gray-800"
+                className="relative inline-flex items-center rounded-md px-4 border border-transparent lg:bg-gray-800 lg:px-1 py-2 text-sm font-sm text-black lg:text-white shadow-md lg:shadow-sm hover:bg-black focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 focus:ring-offset-gray-800"
                 onClick={() => setIsCreatedFolderModalOpen(true)}
               >
                 <div className="flex items-center justify-between">
@@ -88,9 +88,9 @@ const SubBar = ({
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke-width="1.5"
+                    stroke-width="1"
                     stroke="currentColor"
-                    class="w-5 h-5"
+                    class="w-6 h-6"
                   >
                     <path
                       stroke-linecap="round"
@@ -99,7 +99,7 @@ const SubBar = ({
                     />
                   </svg>
 
-                  <span> Add Folder </span>
+                  <span className="lg:block hidden"> Add Folder </span>
                 </div>
               </button>
             </li>

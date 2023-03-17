@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { SignOutUser } from "../../redux/actioncCreators/authActionCreator";
 import { useNavigate } from "react-router-dom";
+import Avatar from "react-avatar";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -53,7 +54,8 @@ export function Nav() {
                   </p>
                 </div>
               </div>
-              <div className="flex items-center">
+              {/* Large Screen */}
+              <div className="flex items-center mt-2">
                 <div className="flex-shrink-0 space-x-3">
                   {isAuthenticated ? (
                     <>
@@ -66,7 +68,7 @@ export function Nav() {
                         </p>
                         <button
                           type="button"
-                          className="relative inline-flex items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800"
+                          className="lg:block hidden relative inline-flex items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800"
                         >
                           <Link to="/dashboard" className="text-white">
                             Dashboard
@@ -74,7 +76,7 @@ export function Nav() {
                         </button>
                         <button
                           type="button"
-                          className="relative inline-flex items-center rounded-md border border-transparent bg-green-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-800"
+                          className="lg:block hidden relative inline-flex items-center rounded-md border border-transparent bg-green-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-800"
                           onClick={logout}
                         >
                           <span>Logout</span>
@@ -85,7 +87,7 @@ export function Nav() {
                     <>
                       <button
                         type="button"
-                        className="relative inline-flex items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800"
+                        className="lg:block hidden relative inline-flex items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800"
                       >
                         <Link className="text-white" to="/login">
                           Login
@@ -93,7 +95,7 @@ export function Nav() {
                       </button>
                       <button
                         type="button"
-                        className="relative inline-flex items-center rounded-md border border-transparent bg-green-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-800"
+                        className="lg:block hidden relative inline-flex items-center rounded-md border border-transparent bg-green-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-800"
                       >
                         <Link className="text-white" to="/register">
                           Register
@@ -110,11 +112,7 @@ export function Nav() {
             <div className="border-t border-gray-700 pt-4 pb-3">
               <div className="flex items-center px-5 sm:px-6">
                 <div className="flex-shrink-0">
-                  <img
-                    className="h-10 w-10 rounded-full"
-                    src={user.imageUrl}
-                    alt=""
-                  />
+                  <Avatar name={user.email} size="40px" round="50px" />
                 </div>
                 <div className="ml-3">
                   <div className="text-base font-medium text-white">
